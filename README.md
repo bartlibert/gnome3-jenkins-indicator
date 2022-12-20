@@ -1,3 +1,7 @@
+# Note!
+I (Bart Libert) have made the minimal changes to get this working for me on Gnome 43. I do not plan to take over
+maintenance of this extension due to lack of time.
+
 # Attention!
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors)
 
