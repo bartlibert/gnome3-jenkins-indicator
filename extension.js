@@ -22,8 +22,8 @@ let settings, settingsJSON;
 // signals container (for clean disconnecting from signals if extension gets disabled)
 let event_signals = [];
 
-const _httpSession = new Soup.SessionAsync();
-Soup.Session.prototype.add_feature.call(_httpSession, new Soup.ProxyResolverDefault());
+const _httpSession = new Soup.Session();
+_httpSession.set_proxy_resolver(Gio.ProxyResolver.get_default());
 
 function createIndicator(server_num) {
 	// create indicator and add to status area

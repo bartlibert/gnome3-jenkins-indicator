@@ -55,9 +55,9 @@ class JobPopupMenuItem extends PopupMenu.PopupBaseMenuItem {
 
 			if( request ) {
 				// kick off request
-				this.httpSession.queue_message(request, Lang.bind(this, function(httpSession, message) {
+				this.httpSession.send_async(request, 1, null, (httpSession, message) => {
 					// we could try to refresh all jobs here but jenkins delays builds by 5 seconds so we wont see any difference
-				}));
+				});
 			}
 
 			// close this menu

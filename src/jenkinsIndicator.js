@@ -85,16 +85,18 @@ class JenkinsIndicator extends PanelMenu.Button {
 			}
 
 			if( request ) {
-				this.httpSession.queue_message(request, Lang.bind(this, function(httpSession, message) {
+				this.httpSession.send_and_read_async(request, 1, null, (httpSession, result) => {
+					const message = httpSession.get_async_result_message(result);
 					// http error
 					if( message.status_code!==200 )	{
 						this.showError(_("Invalid Jenkins CI Server web frontend URL (HTTP Error %s)").format(message.status_code));
 					}
 					// http ok
 					else {
+						const response_body = httpSession.send_and_read_finish(result);
 						// parse json
 						try {
-							let jenkinsState = JSON.parse(request.response_body.data);
+							let jenkinsState = JSON.parse(response_body.get_data());
 
 							// update jobs
 							this.jobs = jenkinsState.jobs;
@@ -110,7 +112,7 @@ class JenkinsIndicator extends PanelMenu.Button {
 
 					// we're done updating and ready for the next request
 					this._isRequesting = false;
-				}));
+				});
 			}
 			// no valid url was provided in settings dialog
 			else {
