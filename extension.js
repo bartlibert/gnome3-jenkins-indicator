@@ -38,7 +38,11 @@ class Extension {
 		// add include path for icons
 		// :TODO: :TO: this does not really work anymore... so I am using gicon instead of icon_name and cache the icons myself...
 		let theme = imports.gi.Gtk.IconTheme.get_default();
-		theme.append_search_path(extensionMeta.path + "/icons");
+		if (theme)
+		{
+			theme.append_search_path(extensionMeta.path + "/icons");
+		}
+			
 			
 		Utils.setIconPath(extensionMeta.path + "/icons");
 
