@@ -63,7 +63,7 @@ function filterJobs(jobs, settings) {
 	let showAllJobs = false;
 	let filteredJobs = [];
 	let jobToShow = settings['jobs_to_show'].trim().split(",");
-	log_info('Will apply the job name filters: ' + jobToShow);
+	// log_info('Will apply the job name filters: ' + jobToShow);
 
 	if ((jobToShow.length == 1) && jobToShow[0] == "all") {
 		showAllJobs = true;
@@ -106,12 +106,12 @@ function jobMatches(job, patterns) {
 		if (positiveSearch) {
 			passedFilters = passedFilters && matchingPattern;
 			if (passedFilters) {
-				log_info('Positive match for job ' + job.name + ' for pattern [' + pattern + ']');
+				// log_info('Positive match for job ' + job.name + ' for pattern [' + pattern + ']');
 			}
 		} else {
 			passedFilters = passedFilters && !matchingPattern;
 			if (passedFilters) {
-				log_info('Negative match for job ' + job.name + ' for pattern [' + pattern + ']');
+				// log_info('Negative match for job ' + job.name + ' for pattern [' + pattern + ']');
 			}
 		}
 	})
