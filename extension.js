@@ -37,13 +37,13 @@ class Extension {
 
 		// add include path for icons
 		// :TODO: :TO: this does not really work anymore... so I am using gicon instead of icon_name and cache the icons myself...
-		let theme = imports.gi.Gtk.IconTheme.get_default();
+		let theme = new St.IconTheme();
 		if (theme)
 		{
 			theme.append_search_path(extensionMeta.path + "/icons");
 		}
-			
-			
+
+
 		Utils.setIconPath(extensionMeta.path + "/icons");
 
 		// load localization dictionaries
@@ -58,7 +58,7 @@ class Extension {
 		// we need to add indicators in reverse order so they appear from left to right
 		for( let i=settingsJSON['servers'].length-1 ; i>=0 ; --i )
 			createIndicator(i);
-		
+
 		// react to changing settings by adding/removing indicators if necessary
 		event_signals.push( settings.connect('changed::settings-json', function(){
 			let settingsJSON_old = settingsJSON;
@@ -71,14 +71,14 @@ class Extension {
 				_indicators[index].destroy();
 				_indicators.splice(index,1);
 			});
-			
+
 			// create new indicators
 			Utils.arrayOpCompare(settingsJSON['servers'], settingsJSON_old['servers'], function(a, b){
 				return a['id']==b['id'];
 			}, function(index, element){
 				createIndicator(index);
 			});
-			
+
 			// update all indicators
 			for( let i=0 ; i<_indicators.length ; ++i )	{
 				_indicators[i].updateSettings(settingsJSON['servers'][i]);
@@ -93,7 +93,7 @@ class Extension {
 		}
 
 		_indicators = [];
-		
+
 		// disconnect all signal listeners
 		for( var i=0 ; i<event_signals.length ; ++i ) {
 			settings.disconnect(event_signals[i]);

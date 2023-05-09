@@ -1,5 +1,5 @@
 # Note!
-I (Bart Libert) have made the minimal changes to get this working for me on Gnome 43. I do not plan to take over
+I (Bart Libert) have made the minimal changes to get this working for me on Gnome 43+. I do not plan to take over
 maintenance of this extension due to lack of time.
 
 # Attention!
@@ -29,10 +29,10 @@ You can conveniently install it like any other Gnome 3 extension in the library.
 
 2. Assuming that you have the gnome shell running hit Alt+F2, type `r` or `restart` (without the ticks), hit enter. The shell should now restart.
 
-If everything is set up correctly you should be able to click the extension icon to bring up a popup menu with all your Jenkins jobs. 
+If everything is set up correctly you should be able to click the extension icon to bring up a popup menu with all your Jenkins jobs.
 
 ## configuration:
-You can configure the extension using the regular extension settings dialog either by clicking **settings** in the extension popup menu or by running `gnome-shell-extension-prefs` and selection the **Jenkins CI Server Indicator** in the drop down menu. 
+You can configure the extension using the regular extension settings dialog either by clicking **settings** in the extension popup menu or by running `gnome-shell-extension-prefs` and selection the **Jenkins CI Server Indicator** in the drop down menu.
 Each tab holds the settings for one Jenkins CI Server.
 You can add more servers by clicking **add server**.
 There is a little **X** button on the tabs to remove the server.
